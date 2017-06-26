@@ -2,13 +2,21 @@
   <div style="width: 100%">
    <!-- <v-peopleList></v-peopleList>-->
     <div class="content">
-
+      <Modal
+        v-model="addPerson"
+        title="普通的Modal对话框标题"
+        @on-ok="ok2('user2')"
+        @on-cancel="cancel">
+        <Select v-model="user2.name" size="small" style="width:100px">
+          <Option v-for="item in com" :value="item.name" >{{ item.name }}</Option>
+        </Select>
+      </Modal>
 
       <Row>
         <div class="content-header">
           人员信息
           <span>
-      <Button type="info" icon='plus' @click='showIncrease = true' size="small"></Button>
+      <Button type="info" icon='plus' @click='showIncrease = true;addPerson=true' size="small"></Button>
         </span>
         </div>
         <div class="oparity">
@@ -179,6 +187,12 @@
   export default{
     data(){
       return {
+        user2: {
+          name: ''
+
+        },
+          com:'',
+        addPerson:false,
         data2: [{
           value: 'zhejiang',
           label: '陕西',
@@ -414,6 +428,10 @@
     methods: {
       getpage () {
         var _this = this;
+        _this.$http.get('http://192.168.31.99:8040/organizations').then(function(res){
+
+          _this.com=res.data
+        })
         _this.$http.get("./static/data.json")
           .then(function (rsp) {
             console.log(rsp.data.goods.type)
@@ -500,6 +518,9 @@
       },
       ok () {
         this.$Message.info('点击了确定');
+      },  ok2 () {
+          console.log('++++')
+       console.log(this.user2);
       },
       cancel () {
         this.$Message.info('点击了取消');
