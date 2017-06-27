@@ -8,7 +8,7 @@
         @on-ok="ok2('user2')"
         @on-cancel="cancel">
         <Select v-model="user2.name" size="small" style="width:100px">
-          <Option v-for="item in com" :value="item.name" >{{ item.name }}</Option>
+          <Option v-for="item in com" :value="item.name" :key="item.id">{{ item.name }}</Option>
         </Select>
       </Modal>
 
@@ -39,37 +39,69 @@
 
 
          <div class="search-body" style="overflow: visible">
+
           <Row :gutter='32'>
-            <i-col span="2">
-              <i-select v-model="personMsg.personname"  filterable placeholder="姓名" clearable style="width: 100%">
-                <i-option> </i-option>
-              </i-select>
+            <i-col span="5">
+              <i-input v-model="value" placeholder="请输入姓名" style="width: 300px"></i-input>
             </i-col>
-            <i-col span="4">
-              <i-select  :model.sync="personMsg.personid"  filterable placeholder="身份证号" clearable style="width: 100%">
-                <i-option     > </i-option>
-              </i-select>
+            <i-col span="5">
+              <i-input v-model="value" placeholder="请输入身份证号码" style="width: 300px"></i-input>
             </i-col>
-            <i-col span="6">
-              <Cascader :data="data2" placeholder="请选择地区"></Cascader>
+            <i-col span="5">
+              <i-input v-model="value" placeholder="请输入身社保号码" style="width: 300px"></i-input>
             </i-col>
-
-            <i-col span="2">
-              <i-select  :model.sync="personMsg.personsex"  filterable placeholder="性别" clearable style="width: 100%">
-                <i-option     > </i-option>
-              </i-select>
-            </i-col>
-            <i-col span="3">
-              <date-picker :model.sync="personMsg.time" type="datetime"   placeholder="时间" style="width: 100%"  ></date-picker>
-            </i-col>
-
             <i-col span="1" >
               <i-button type="info" @click="search" >搜索</i-button>
             </i-col>
           </Row>
-        </div>
-        <Table border :columns="columns7" :row-class-name="rowClassName"    :data="data6"></Table>
+            <div class="more-search" v-show="true">
+              <Row :gutter='32'>
+              <i-col span="7">
+                <Cascader :data="data2" placeholder="请选择地区"></Cascader>
+              </i-col>
 
+              <i-col span="2">
+                <i-select  :model.sync="personMsg.personsex"  filterable placeholder="性别" clearable style="width: 100%">
+                  <i-option     > </i-option>
+                </i-select>
+              </i-col>
+              <i-col span="3">
+                <date-picker :model.sync="personMsg.time" type="datetime"   placeholder="时间" style="width: 100%"  ></date-picker>
+              </i-col>
+                <i-col span="2">
+                  <i-select  :model.sync="personMsg.personsex"  filterable placeholder="认证状态" clearable style="width: 100%">
+                    <i-option     > </i-option>
+                  </i-select>
+                </i-col>
+              </Row>
+            </div>
+            <p class="search-tip" v-show="aa">
+              <Icon type= "arrow-up-b"></Icon>  收起高级查询项
+            </p>
+  <p class="search-tip" v-show="!aa">
+              <Icon type= "arrow-down-b"></Icon>  展开高级查询项
+            </p>
+
+
+        </div>
+      <div v-if="false">
+        <Table v-show="true" border :columns="columns7" :row-class-name="rowClassName"    :data="data6"></Table>
+        <div class="all-btn">
+          <ul>
+            <li><ol v-if="true">
+              <li><Button disabled="disable" size="large" type="error">删除</Button>
+                <Button disabled size="large" type="warning">修改</Button></li>
+            </ol>
+              <ol v-if="false">
+              <li><Button   size="large" type="error">删除</Button>
+                <Button   size="large" type="warning">修改</Button></li>
+            </ol></li>
+            <li>  <Page :total="100"></Page></li>
+          </ul>
+
+
+        </div>
+      </div>
 
 
       <!--   <div style="margin-left: 70%">
@@ -187,6 +219,7 @@
   export default{
     data(){
       return {
+          aa:true,
         user2: {
           name: ''
 
@@ -265,6 +298,11 @@
         ],
         columns7: [
           {
+            type: 'selection',
+            width: 60,
+            align: 'center'
+          },
+          {
             title: '姓名',
             key: 'name',
             render: (h, params) => {
@@ -281,6 +319,9 @@
           {
             title: '年龄',
             key: 'type'
+          },  {
+            title: '指静脉信息',
+            key: 'type'
           },
           {
             title: '地址',
@@ -291,7 +332,7 @@
             key: 'action',
             width: 150,
             align: 'center',
-            render: (h, params) => {
+             render: (h, params) => {
               return h('div', [
                 h('Button', {
                   props: {
@@ -347,20 +388,7 @@
                     }
                   }
                 }, '查看'),
-                h('Button', {
-                  props: {
-                    type: 'error',
-                    size: 'small'
-                  },
-                  style: {
-                    marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      this.remove(params.index)
-                    }
-                  }
-                }, '删除'),
+
                 h('Button', {
                   props: {
                     type: 'error',
@@ -401,7 +429,21 @@
                       this.remove(params.index)
                     }
                   }
-                }, '迁移'),
+                }, '修改'),
+             /*   h('Button', {
+                  props: {
+                    type: 'error',
+                    size: 'small'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      this.remove(params.index)
+                    }
+                  }
+                }, '读取身份证'),*/
                 h('Button', {
                   props: {
                     type: 'error',
@@ -415,7 +457,7 @@
                       this.remove(params.index)
                     }
                   }
-                }, '读取身份证')
+                }, '删除')
               ]);
             }
           }
@@ -646,6 +688,30 @@ this. rowClassName();
     font-weight: 400;
     color: rgba(0, 0, 0, 0.87);
     position: relative;
-    margin-left: 6px;
+    margin-left: 56px;
+  }
+  .more-search{
+    margin-top: 30px;
+    margin-left: 25px;
+  }
+  .search-tip{
+    color: gainsboro;
+    font-size: 16px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: .5s;
+  }
+  .search-tip:hover{
+    color: #ccc;
+  }
+  .all-btn{
+    float: right;
+    margin-top: 20px;
+  }
+  .all-btn ul li {
+    float: left;
+    margin-right: 50px;
   }
 </style>

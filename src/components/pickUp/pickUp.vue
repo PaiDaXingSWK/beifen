@@ -249,7 +249,7 @@
     data(){
       return {
         modalCom:false,
-        stepCount: 2,
+        stepCount: 0,
         button4: '北京',
         options4: {
           disabledDate (date) {

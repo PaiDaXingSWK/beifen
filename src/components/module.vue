@@ -67,18 +67,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #ebebeb;
+   /* background: #ebebeb;*/
+    background: url("../images/banner2.jpg") no-repeat ;
+    background-size:100% 100%;
     z-index: 9;
   }
-.cover{
-  position: absolute;
-   top:0;
-  left: 0;
-  opacity: .7;
-  width: 100%;
-  height: 100%;
-  background: gray;
-}
+
   .module-wrapper {
     width: 800px;
     height: 500px;
@@ -124,8 +118,7 @@
     font-size: 40px;
     line-height: 200px;
     text-align: center;
-    background:url("../images/banner.png") no-repeat;
-    background-size:cover ;
+   background: rgba(0,0,0,.75);
     z-index: 99;
   }
   .module-list li {
@@ -138,14 +131,15 @@
 line-height: 480px;
     font-size: 25px;
     text-align: center;
-    background: #fff;
+    background: rgba(255,255,255,.92);
     font-weight: 600;
     transition: .4s linear all;
   }
 
   .module-list li:hover{
 
-    background: rgba(0,0,0,.05);
+    background: rgba(
+      211,211,211,.95);
   }
 
    .module-list li:nth-child(4){

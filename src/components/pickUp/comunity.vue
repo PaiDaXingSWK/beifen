@@ -8,6 +8,10 @@
           <i-col span="11">
             <Cascader :data="data" v-model="value2"></Cascader>
           </i-col>
+          <div class="add-office" @click="aa=true">
+            <Icon type="plus-round"></Icon>
+            添加其他所在址
+          </div>
         </Form-item>
         <Form-item label="选择办事处：">
           <i-col span="11">
