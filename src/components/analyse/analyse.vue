@@ -6,11 +6,11 @@
 
         <Menu-item name="searchPeople">
           <Icon type="document-text"></Icon>
-          查询人员信息
+          认真/非认证
         </Menu-item>
         <Menu-item name="identify">
           <Icon type="chatbubbles"></Icon>
-          认真/非认证
+          人员报表
         </Menu-item>
         <Menu-item name="hisIdentify">
           <Icon type="chatbubbles"></Icon>

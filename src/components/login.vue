@@ -109,7 +109,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    background: url('../images/bb.jpg') no-repeat;
+    background: url('../images/lou.jpg') no-repeat;
     background-size: cover;
   }
   .demo-tabs-style1 > .ivu-tabs-card > .ivu-tabs-content {

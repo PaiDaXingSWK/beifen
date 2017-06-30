@@ -6,6 +6,10 @@
       <Button type="info" icon='plus' @click='showIncrease = true' size="small"></Button>
         </span>
       </div>
+      <div style="text-align: right;margin-bottom: 10px">
+        <Button>数据备份</Button>
+        <Button>数据恢复</Button>
+      </div>
       <Table border :columns="columns7" :data="data6"></Table>
 
     </div>

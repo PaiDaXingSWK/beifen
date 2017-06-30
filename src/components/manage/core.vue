@@ -6,6 +6,10 @@
       <Button type="info" icon='plus' @click='showIncrease = true' size="small"></Button>
         </span>
       </div>
+      <div style="text-align: right;margin-bottom: 10px">
+        <Button>数据备份</Button>
+        <Button>数据恢复</Button>
+      </div>
       <Table border :columns="columnsCore" :row-class-name="rowClassName" :data="dataCore"></Table>
     </div>
 </template>
@@ -35,8 +39,21 @@
                 },
                 {
                   title: '状态',
-                  key: 'status'
-                }, {
+                  key: 'status',
+                  render: (h, params) => {
+                    const row = params.row;
+                    const color = row.status === 1 ? 'blue' : row.status === 2 ? 'green' : 'red';
+                    const text = row.status === 1 ? '构建中' : row.status === 2 ? '构建完成' : '设备异常';
+
+                    return h('Tag', {
+                      props: {
+                        type: 'dot',
+                        color: color
+                      }
+                    }, text);
+                  }
+                },
+                 {
                   title: 'ip',
                   key: 'ip'
                 }, {

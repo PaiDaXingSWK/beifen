@@ -11,7 +11,7 @@
         </Menu-item>
         <Menu-item name="setUp">
           <Icon type="chatbubbles"></Icon>
-          管理设置
+         系统管理
         </Menu-item>
         <Menu-item name="core">
           <Icon type="chatbubbles"></Icon>

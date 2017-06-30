@@ -7,7 +7,7 @@
       </span>
     </div>
     <div style="margin: 0 auto ;width: 70%">
-  <Menu mode="horizontal" class="navMainWrapper" theme="dark" :active-name="setActive"  :default-active="onRoutes" @on-select="routeTo">
+  <Menu mode="horizontal" class="navMainWrapper"   theme="dark" :active-name="setActive"  :default-active="onRoutes" @on-select="routeTo">
 
    <!-- <Menu-item name="identify">
       <Icon type="ios-people"></Icon>
@@ -27,7 +27,7 @@
     </Menu-item>
     <Menu-item name="manage" >
       <Icon type="ios-people"></Icon>
-      系统管理
+      核心管理
     </Menu-item>
 
 
@@ -126,7 +126,7 @@
       text-align: center;
     }
   .ivu-menu-item:hover{
-    font-size: 20px;
+    font-size: 22px;
 
   }
   .ivu-menu-item a{
@@ -141,5 +141,8 @@
 
   .ivu-menu-light {
     background: #00d1b2;
+  }
+  .navMainWrapper    li {
+    font-size: 19px  ;
   }
 </style>

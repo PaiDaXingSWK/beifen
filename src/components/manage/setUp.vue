@@ -1,10 +1,10 @@
 <template>
     <div>
 
-        <div><i-button type="info" @click='ExportOrigin'  style="margin-bottom: 10px">数据恢复</i-button>
-          <i-button type="info" @click='ExportOrigin'  style="margin-bottom: 10px">数据同步</i-button>
-          <i-button type="info" @click='ExportOrigin'  style="margin-bottom: 10px">系统备份</i-button>
-          <i-button type="info" @click='ExportOrigin'  style="margin-bottom: 10px">参数配置</i-button></div>
+        <div><i-button type="info" @click='ExportOrigin'  style="margin-bottom: 10px">系统恢复</i-button>
+          <i-button type="info" @click='ExportOrigin'  style="margin-bottom: 10px">系统收到备份</i-button>
+          <i-button type="info" @click='ExportOrigin'  style="margin-bottom: 10px">系统自动备份</i-button>
+          <i-button type="info" @click='ExportOrigin'  style="margin-bottom: 10px">系统自动备份参数配置</i-button></div>
 
     </div>
 </template>
